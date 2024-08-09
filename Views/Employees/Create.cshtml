@@ -1,0 +1,111 @@
+﻿@model GestionEmpleados.Models.Employee
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <table id="employeeCreateTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label asp-for="FirstName" class="control-label">Nombre</label></td>
+                        <td>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="LastName" class="control-label">Apellido</label></td>
+                        <td>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Address" class="control-label">Dirección</label></td>
+                        <td>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Email" class="control-label">Correo Electrónico</label></td>
+                        <td>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="PhoneNumber" class="control-label">Número de Teléfono</label></td>
+                        <td>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="DateOfBirth" class="control-label">Fecha de Nacimiento</label></td>
+                        <td>
+                            <input asp-for="DateOfBirth" class="form-control datepicker" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="DateOfHire" class="control-label">Fecha de Contratación</label></td>
+                        <td>
+                            <input asp-for="DateOfHire" class="form-control datepicker" />
+                            <span asp-validation-for="DateOfHire" class="text-danger"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la Lista</a>
+</div>
+
+@section Scripts {
+    <script src="~/wwwroot/assets/js/jquery.dataTables.min.js"></script>
+    <script src="~/wwwroot/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/wwwroot/assets/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Inicializa DataTables
+            $('#employeeCreateTable').DataTable({
+                "paging": false,
+                "searching": false,
+                "info": false
+            });
+
+            // Inicializa Datepicker
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

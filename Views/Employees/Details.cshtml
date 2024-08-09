@@ -1,0 +1,68 @@
+﻿@model GestionEmpleados.Models.Employee
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <table id="employeeDetailsTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nombre</td>
+                <td>@Html.DisplayFor(model => model.FirstName)</td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td>@Html.DisplayFor(model => model.LastName)</td>
+            </tr>
+            <tr>
+                <td>Dirección</td>
+                <td>@Html.DisplayFor(model => model.Address)</td>
+            </tr>
+            <tr>
+                <td>Correo Electrónico</td>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <td>Número de Teléfono</td>
+                <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+            </tr>
+            <tr>
+                <td>Fecha de Nacimiento</td>
+                <td>@Html.DisplayFor(model => model.DateOfBirth)</td>
+            </tr>
+            <tr>
+                <td>Fecha de Contratación</td>
+                <td>@Html.DisplayFor(model => model.DateOfHire)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.EmployeeId">Editar</a> |
+    <a asp-action="Index">Volver a la Lista</a>
+</div>
+
+@section Scripts {
+    <script src="~/wwwroot/assets/js/jquery.dataTables.min.js"></script>
+    <script src="~/wwwroot/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#employeeDetailsTable').DataTable({
+                "paging": false,
+                "searching": false,
+                "info": false
+            });
+        });
+    </script>
+}

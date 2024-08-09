@@ -1,0 +1,45 @@
+﻿@model GestionEmpleados.Models.Employee
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar Empleado</h1>
+
+<h3 class="text-danger">¿Estás seguro de que deseas eliminar este registro?</h3>
+<div class="card">
+    <div class="card-body">
+        <h4>Detalles del Empleado</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.FirstName)</dd>
+
+            <dt class="col-sm-3">Apellido</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.LastName)</dd>
+
+            <dt class="col-sm-3">Dirección</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+
+            <dt class="col-sm-3">Correo Electrónico</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class="col-sm-3">Número de Teléfono</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.PhoneNumber)</dd>
+
+            <dt class="col-sm-3">Fecha de Nacimiento</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DateOfBirth)</dd>
+
+            <dt class="col-sm-3">Fecha de Contratación</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DateOfHire)</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" class="mt-4">
+    <input type="hidden" asp-for="EmployeeId" />
+    <div class="form-group">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+    </div>
+</form>
